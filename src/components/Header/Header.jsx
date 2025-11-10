@@ -1,15 +1,26 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import NavLinks from "../UI/NavLinks/NavLinks";
 import logo from "../../assets/logo.png";
-import { FaRegCircleUser } from "react-icons/fa6";
 import { AuthContext } from "../../Context/AuthContext/AuthContext";
 import Swal from "sweetalert2";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 const Header = () => {
   const { user, signOutUser } = useContext(AuthContext);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const navigate = useNavigate();
+
+  // Theme switch handler
+  useEffect(() => {
+    document.querySelector("html").setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
 
   // Navbar links visible to everyone
   const links = (
@@ -77,7 +88,6 @@ const Header = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             {links}
-            {/* Add private links in mobile view if user is logged in */}
             {user && (
               <>
                 <li>
@@ -104,8 +114,21 @@ const Header = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
 
-      {/* Right: Login/Signup or User Dropdown */}
-      <div className="navbar-end relative">
+      {/* Right: Theme toggle + Login/User */}
+      <div className="navbar-end flex items-center gap-3 relative">
+        {/* Theme toggle button */}
+        <button
+          onClick={toggleTheme}
+          className="btn btn-ghost btn-circle text-xl"
+          title="Toggle Theme"
+        >
+          {theme === "light" ? (
+            <FaMoon className="text-gray-700" />
+          ) : (
+            <FaSun className="text-yellow-400" />
+          )}
+        </button>
+
         {!user ? (
           <div className="flex gap-3">
             <Link
@@ -135,7 +158,7 @@ const Header = () => {
             </button>
 
             {isDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-52 bg-white rounded-xl shadow-lg border p-3 z-10">
+              <div className="absolute right-0 mt-2 w-52 bg-base-100 rounded-xl shadow-lg border p-3 z-10">
                 <p className="text-gray-800 font-semibold mb-2">
                   {user.displayName || "User"}
                 </p>

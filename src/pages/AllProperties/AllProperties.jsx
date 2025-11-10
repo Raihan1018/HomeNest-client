@@ -15,7 +15,7 @@ const AllProperties = () => {
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
-      <h2 className="text-3xl font-semibold mb-6 text-center">
+      <h2 className="text-3xl font-semibold mb-6 text-center dark:text-gray-100 text-gray-800">
         All Properties
       </h2>
 
@@ -23,7 +23,7 @@ const AllProperties = () => {
         {properties.map((property) => (
           <div
             key={property._id}
-            className="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col"
+            className="bg-white dark:bg-gray-900 rounded-xl shadow-md hover:shadow-lg transition p-4 flex flex-col border border-gray-100 dark:border-gray-800"
           >
             <img
               src={property.imageURL}
@@ -31,19 +31,22 @@ const AllProperties = () => {
               className="w-full h-48 object-cover rounded-lg mb-4"
             />
 
-            <h3 className="text-xl font-bold mb-1">{property.name}</h3>
+            <h3 className="text-xl font-bold mb-1 text-gray-800 dark:text-gray-100">
+              {property.name}
+            </h3>
 
-            <p className="flex items-center gap-2 text-gray-700 mb-1">
-              <FaTags /> {property.category}
+            <p className="flex items-center gap-2 text-gray-600 dark:text-gray-300 mb-1">
+              <FaTags className="text-emerald-500" /> {property.category}
             </p>
-            <p className="flex items-center gap-2 text-gray-700 mb-1">
-              <FaDollarSign /> {property.price}
+            <p className="flex items-center gap-2 text-gray-600 dark:text-gray-300 mb-1">
+              <FaDollarSign className="text-emerald-500" /> {property.price}
             </p>
-            <p className="flex items-center gap-2 text-gray-700 mb-1">
-              <FaMapMarkerAlt /> {property.location}
+            <p className="flex items-center gap-2 text-gray-600 dark:text-gray-300 mb-1">
+              <FaMapMarkerAlt className="text-emerald-500" />{" "}
+              {property.location}
             </p>
-            <p className="flex items-center gap-2 text-gray-700 mb-3">
-              <FaUser /> {property.userName}
+            <p className="flex items-center gap-2 text-gray-600 dark:text-gray-300 mb-3">
+              <FaUser className="text-emerald-500" /> {property.userName}
             </p>
 
             <Link
