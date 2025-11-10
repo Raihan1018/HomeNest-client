@@ -63,10 +63,10 @@ const Header = () => {
       : "https://i.ibb.co/Z8jQZrJ/default-user.png";
 
   return (
-    <div className="navbar bg-base-100 shadow-sm px-4">
+    <div className="navbar  shadow-sm px-4">
       {/* Left: Logo + Mobile Menu */}
       <div className="navbar-start">
-        <div className="dropdown">
+        <div className="dropdown ">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +85,7 @@ const Header = () => {
           </div>
           <ul
             tabIndex={-1}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content rounded-box z-[1] mt-3 w-52 p-2 shadow "
           >
             {links}
             {user && (
@@ -159,40 +159,40 @@ const Header = () => {
 
             {isDropdownOpen && (
               <div className="absolute right-0 mt-2 w-52 bg-base-100 rounded-xl shadow-lg border p-3 z-10">
-                <p className="text-gray-800 font-semibold mb-2">
+                <p className=" font-semibold mb-2 underline">
                   {user.displayName || "User"}
                 </p>
                 <Link
                   to="/profile"
-                  className="block px-3 py-2 rounded-lg hover:bg-emerald-50 text-gray-700 mb-1"
+                  className="block px-3 py-2 rounded-lg hover:translate-x-2 duration-200 ease-in-out  mb-1"
                   onClick={() => setIsDropdownOpen(false)}
                 >
                   View Profile
                 </Link>
                 <Link
                   to="/add-properties"
-                  className="block px-3 py-2 rounded-lg hover:bg-emerald-50 text-gray-700 mb-1"
+                  className="block px-3 py-2 rounded-lg hover:translate-x-2 duration-200 ease-in-out mb-1"
                   onClick={() => setIsDropdownOpen(false)}
                 >
                   Add Property
                 </Link>
                 <Link
                   to="/my-properties"
-                  className="block px-3 py-2 rounded-lg hover:bg-emerald-50 text-gray-700 mb-1"
+                  className="block px-3 py-2 rounded-lg hover:translate-x-2 duration-200 ease-in-out  mb-1"
                   onClick={() => setIsDropdownOpen(false)}
                 >
                   My Properties
                 </Link>
                 <Link
                   to="/my-ratings"
-                  className="block px-3 py-2 rounded-lg hover:bg-emerald-50 text-gray-700 mb-1"
+                  className="block px-3 py-2 rounded-lg hover:translate-x-2 duration-200 ease-in-out  mb-1"
                   onClick={() => setIsDropdownOpen(false)}
                 >
                   My Ratings
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="w-full text-left px-3 py-2 rounded-lg hover:bg-emerald-50 text-red-500"
+                  className="w-full text-left px-3 py-2 rounded-lg  text-red-500 hover:translate-x-2 duration-200 ease-in-out"
                 >
                   Log out
                 </button>
