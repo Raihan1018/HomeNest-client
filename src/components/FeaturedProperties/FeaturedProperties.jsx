@@ -8,6 +8,7 @@ const FeaturedProperties = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
+  const [priceSort, setPriceSort] = useState("default"); // New state for price sort
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,11 +18,10 @@ const FeaturedProperties = () => {
       .catch((err) => console.error(err));
   }, []);
 
-  // Extract unique categories from property data
   const categories = ["All", ...new Set(properties.map((p) => p.category))];
 
   // Filtering logic
-  const filteredProperties = properties.filter((property) => {
+  let filteredProperties = properties.filter((property) => {
     const matchesSearch =
       property.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       property.location.toLowerCase().includes(searchQuery.toLowerCase());
@@ -33,7 +33,14 @@ const FeaturedProperties = () => {
     return matchesSearch && matchesCategory && matchesPrice;
   });
 
-  // Show only first 6 after filter
+  // Sorting logic
+  if (priceSort === "lowToHigh") {
+    filteredProperties.sort((a, b) => a.price - b.price);
+  } else if (priceSort === "highToLow") {
+    filteredProperties.sort((a, b) => b.price - a.price);
+  }
+
+  // Show only first 6 after filter & sort
   const featured = filteredProperties.slice(0, 6);
 
   return (
@@ -84,6 +91,17 @@ const FeaturedProperties = () => {
             className="input input-bordered w-1/2 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
           />
         </div>
+
+        {/* Price Sort */}
+        <select
+          value={priceSort}
+          onChange={(e) => setPriceSort(e.target.value)}
+          className="select select-bordered bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 w-full md:w-1/4"
+        >
+          <option value="default">Sort by Price</option>
+          <option value="lowToHigh">Price: Low to High</option>
+          <option value="highToLow">Price: High to Low</option>
+        </select>
       </div>
 
       {/* Property Grid */}

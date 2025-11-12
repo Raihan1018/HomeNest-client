@@ -113,7 +113,7 @@ const MyProperties = () => {
             <p className=" font-semibold">Price: {property.price}</p>
             <p className="">Location: {property.location}</p>
             <p className=" text-sm">
-              Posted: {new Date(property.postedDate).toLocaleDateString()}
+              Posted: {new Date(property.createdAt).toLocaleDateString()}
             </p>
             <div className="flex gap-3 mt-3">
               <button
@@ -141,14 +141,16 @@ const MyProperties = () => {
 
       {/* Edit Modal */}
       {editingProperty && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className=" rounded-xl p-6 w-full max-w-lg relative">
-            <h2 className="text-2xl font-semibold mb-4">Update Property</h2>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
+          <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl w-full max-w-lg p-6 relative animate-slideIn">
+            <h2 className="text-2xl font-semibold mb-6 text-gray-800 dark:text-gray-100">
+              Update Property
+            </h2>
             <form onSubmit={handleUpdateSubmit} className="space-y-4">
               <input
                 type="text"
                 placeholder="Property Name"
-                className="w-full px-4 py-2 border rounded"
+                className="w-full px-4 py-3 border rounded-lg focus:ring-emerald-500 focus:border-emerald-500 dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700"
                 value={editingProperty.name}
                 onChange={(e) =>
                   setEditingProperty({
@@ -160,7 +162,7 @@ const MyProperties = () => {
               />
               <textarea
                 placeholder="Description"
-                className="w-full px-4 py-2 border rounded"
+                className="w-full px-4 py-3 border rounded-lg focus:ring-emerald-500 focus:border-emerald-500 dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700"
                 value={editingProperty.description}
                 onChange={(e) =>
                   setEditingProperty({
@@ -171,7 +173,7 @@ const MyProperties = () => {
                 required
               />
               <select
-                className="w-full px-4 py-2 border rounded"
+                className="w-full px-4 py-3 border rounded-lg focus:ring-emerald-500 focus:border-emerald-500 dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700"
                 value={editingProperty.category}
                 onChange={(e) =>
                   setEditingProperty({
@@ -190,7 +192,7 @@ const MyProperties = () => {
               <input
                 type="number"
                 placeholder="Price"
-                className="w-full px-4 py-2 border rounded"
+                className="w-full px-4 py-3 border rounded-lg focus:ring-emerald-500 focus:border-emerald-500 dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700"
                 value={editingProperty.price}
                 onChange={(e) =>
                   setEditingProperty({
@@ -203,7 +205,7 @@ const MyProperties = () => {
               <input
                 type="text"
                 placeholder="Location"
-                className="w-full px-4 py-2 border rounded"
+                className="w-full px-4 py-3 border rounded-lg focus:ring-emerald-500 focus:border-emerald-500 dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700"
                 value={editingProperty.location}
                 onChange={(e) =>
                   setEditingProperty({
@@ -216,7 +218,7 @@ const MyProperties = () => {
               <input
                 type="text"
                 placeholder="Image URL"
-                className="w-full px-4 py-2 border rounded"
+                className="w-full px-4 py-3 border rounded-lg focus:ring-emerald-500 focus:border-emerald-500 dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700"
                 value={editingProperty.imageURL}
                 onChange={(e) =>
                   setEditingProperty({
@@ -226,17 +228,17 @@ const MyProperties = () => {
                 }
                 required
               />
-              <div className="flex justify-end gap-3 mt-2">
+              <div className="flex justify-end gap-3 mt-4">
                 <button
                   type="button"
-                  className="px-4 py-2 rounded "
+                  className="px-5 py-2 rounded-lg border border-gray-300 hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-800"
                   onClick={() => setEditingProperty(null)}
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded bg-green-500  hover:bg-green-600"
+                  className="px-5 py-2 rounded-lg bg-emerald-500 text-white hover:bg-emerald-600 transition"
                 >
                   Update
                 </button>
