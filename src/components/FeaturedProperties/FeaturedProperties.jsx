@@ -8,11 +8,12 @@ const FeaturedProperties = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
-  const [priceSort, setPriceSort] = useState("default"); // New state for price sort
+  const [priceSort, setPriceSort] = useState("default");
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:3000/properties")
+    // Fetch properties sorted by newest first
+    fetch("http://localhost:3000/properties?sort=newest")
       .then((res) => res.json())
       .then((data) => setProperties(data))
       .catch((err) => console.error(err));
@@ -33,14 +34,14 @@ const FeaturedProperties = () => {
     return matchesSearch && matchesCategory && matchesPrice;
   });
 
-  // Sorting logic
+  // Price sorting
   if (priceSort === "lowToHigh") {
     filteredProperties.sort((a, b) => a.price - b.price);
   } else if (priceSort === "highToLow") {
     filteredProperties.sort((a, b) => b.price - a.price);
   }
 
-  // Show only first 6 after filter & sort
+  // Show only first 6 properties
   const featured = filteredProperties.slice(0, 6);
 
   return (
@@ -49,9 +50,8 @@ const FeaturedProperties = () => {
         Featured Real Estate
       </h2>
 
-      {/*  Filters Section */}
+      {/* Filters */}
       <div className="flex flex-col md:flex-row gap-4 mb-10 bg-base-200 dark:bg-gray-800 p-5 rounded-lg shadow-sm items-center justify-between">
-        {/* Search */}
         <div className="relative w-full md:w-1/3">
           <input
             type="text"
@@ -63,7 +63,6 @@ const FeaturedProperties = () => {
           <FaSearch className="absolute left-3 top-3 text-gray-500 dark:text-gray-400" />
         </div>
 
-        {/* Category Filter */}
         <select
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
@@ -74,7 +73,6 @@ const FeaturedProperties = () => {
           ))}
         </select>
 
-        {/* Price Filter */}
         <div className="flex gap-3 w-full md:w-1/3">
           <input
             type="number"
@@ -92,7 +90,6 @@ const FeaturedProperties = () => {
           />
         </div>
 
-        {/* Price Sort */}
         <select
           value={priceSort}
           onChange={(e) => setPriceSort(e.target.value)}
@@ -104,7 +101,7 @@ const FeaturedProperties = () => {
         </select>
       </div>
 
-      {/* Property Grid */}
+      {/* Properties Grid */}
       {featured.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {featured.map((property) => (
@@ -119,7 +116,6 @@ const FeaturedProperties = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-
               <div className="p-5 flex flex-col flex-1">
                 <h3 className="text-xl font-semibold dark:text-gray-100 mb-1">
                   {property.name}
@@ -164,7 +160,7 @@ const FeaturedProperties = () => {
         </p>
       )}
 
-      {/* Load More Button */}
+      {/* Load More */}
       {filteredProperties.length > 6 && (
         <div className="mt-10 text-center">
           <button
