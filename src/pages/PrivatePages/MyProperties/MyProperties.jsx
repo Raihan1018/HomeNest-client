@@ -101,7 +101,7 @@ const MyProperties = () => {
         {properties.map((property) => (
           <div
             key={property._id}
-            className="bg-white p-4 rounded-xl shadow hover:shadow-lg transition"
+            className=" p-4 rounded-xl shadow hover:shadow-lg transition border  hover:-translate-y-1 duration-200 ease-in-out"
           >
             <img
               src={property.imageURL}
@@ -109,18 +109,16 @@ const MyProperties = () => {
               className="w-full h-48 object-cover rounded-lg mb-3"
             />
             <h3 className="text-xl font-bold">{property.name}</h3>
-            <p className="text-gray-600">{property.category}</p>
-            <p className="text-gray-800 font-semibold">
-              Price: {property.price}
-            </p>
-            <p className="text-gray-600">Location: {property.location}</p>
-            <p className="text-gray-500 text-sm">
+            <p className="">{property.category}</p>
+            <p className=" font-semibold">Price: {property.price}</p>
+            <p className="">Location: {property.location}</p>
+            <p className=" text-sm">
               Posted: {new Date(property.postedDate).toLocaleDateString()}
             </p>
             <div className="flex gap-3 mt-3">
               <button
                 onClick={() => navigate(`/property/${property._id}`)}
-                className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
+                className="bg-blue-500  px-3 py-1 rounded hover:bg-blue-600"
               >
                 <FaEye />
               </button>
@@ -132,7 +130,7 @@ const MyProperties = () => {
               </button>
               <button
                 onClick={() => handleDelete(property._id)}
-                className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                className="bg-red-500   px-3 py-1 rounded hover:bg-red-600"
               >
                 <FaTrash />
               </button>
@@ -144,7 +142,7 @@ const MyProperties = () => {
       {/* Edit Modal */}
       {editingProperty && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-6 w-full max-w-lg relative">
+          <div className=" rounded-xl p-6 w-full max-w-lg relative">
             <h2 className="text-2xl font-semibold mb-4">Update Property</h2>
             <form onSubmit={handleUpdateSubmit} className="space-y-4">
               <input
@@ -231,14 +229,14 @@ const MyProperties = () => {
               <div className="flex justify-end gap-3 mt-2">
                 <button
                   type="button"
-                  className="px-4 py-2 rounded bg-gray-300 hover:bg-gray-400"
+                  className="px-4 py-2 rounded "
                   onClick={() => setEditingProperty(null)}
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded bg-green-500 text-white hover:bg-green-600"
+                  className="px-4 py-2 rounded bg-green-500  hover:bg-green-600"
                 >
                   Update
                 </button>

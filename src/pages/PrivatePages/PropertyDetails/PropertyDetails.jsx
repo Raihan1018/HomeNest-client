@@ -7,8 +7,27 @@ import {
   FaUser,
   FaCalendarAlt,
   FaStar,
+  FaClock,
 } from "react-icons/fa";
 import Swal from "sweetalert2";
+
+// Helper to calculate "time ago"
+const timeAgo = (date) => {
+  const now = new Date();
+  const past = new Date(date);
+  const diffMs = now - past;
+  const diffSec = Math.floor(diffMs / 1000);
+  const diffMin = Math.floor(diffSec / 60);
+  const diffHr = Math.floor(diffMin / 60);
+  const diffDay = Math.floor(diffHr / 24);
+
+  if (diffSec < 60) return "Just now";
+  if (diffMin < 60) return `${diffMin} min${diffMin > 1 ? "s" : ""} ago`;
+  if (diffHr < 24) return `${diffHr} hour${diffHr > 1 ? "s" : ""} ago`;
+  if (diffDay < 7) return `${diffDay} day${diffDay > 1 ? "s" : ""} ago`;
+
+  return past.toLocaleDateString();
+};
 
 const PropertyDetails = () => {
   const { id } = useParams();
@@ -18,18 +37,23 @@ const PropertyDetails = () => {
   const [review, setReview] = useState("");
   const [reviewsList, setReviewsList] = useState([]);
 
+  // Function to fetch reviews
+  const fetchReviews = () => {
+    fetch(`http://localhost:3000/reviews?propertyId=${id}`)
+      .then((res) => res.json())
+      .then((data) => setReviewsList(data))
+      .catch((err) => console.error(err));
+  };
+
   useEffect(() => {
-    // Fetch property
+    // Fetch property details
     fetch(`http://localhost:3000/properties/${id}`)
       .then((res) => res.json())
       .then((data) => setProperty(data))
       .catch((err) => console.error(err));
 
-    // Fetch reviews
-    fetch(`http://localhost:3000/reviews?propertyId=${id}`)
-      .then((res) => res.json())
-      .then((data) => setReviewsList(data))
-      .catch((err) => console.error(err));
+    // Fetch reviews initially
+    fetchReviews();
   }, [id]);
 
   if (!property)
@@ -54,6 +78,7 @@ const PropertyDetails = () => {
       review,
       reviewerName: property.userName,
       reviewerEmail: property.userEmail,
+      createdAt: new Date().toISOString(),
     };
 
     try {
@@ -64,7 +89,6 @@ const PropertyDetails = () => {
       });
 
       if (!res.ok) throw new Error("Failed to add review");
-      const savedReview = await res.json();
 
       Swal.fire({
         icon: "success",
@@ -73,7 +97,9 @@ const PropertyDetails = () => {
         timer: 1500,
       });
 
-      setReviewsList([...reviewsList, savedReview]);
+      // Fetch updated reviews after adding new one
+      fetchReviews();
+
       setRating(0);
       setHoverRating(0);
       setReview("");
@@ -126,7 +152,7 @@ const PropertyDetails = () => {
             </p>
             <p className="flex items-center gap-2 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg shadow-sm dark:shadow-md">
               <FaCalendarAlt className="text-emerald-500" />{" "}
-              {new Date(property.postedDate).toLocaleDateString()}
+              {new Date(property.createdAt).toLocaleDateString()}
             </p>
           </div>
         </div>
@@ -177,29 +203,39 @@ const PropertyDetails = () => {
           {reviewsList.length === 0 ? (
             <p className="text-gray-500 dark:text-gray-400">No reviews yet.</p>
           ) : (
-            reviewsList.map((rev, idx) => (
-              <div
-                key={idx}
-                className="p-4 rounded-xl shadow-sm dark:shadow-md bg-white dark:bg-gray-900 flex flex-col gap-2"
-              >
-                <p className="font-medium text-gray-800 dark:text-gray-100">
-                  {rev.reviewerName} ({rev.reviewerEmail})
-                </p>
-                <div className="flex gap-1">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <FaStar
-                      key={star}
-                      className={`${
-                        star <= rev.rating
-                          ? "text-yellow-400"
-                          : "text-gray-300 dark:text-gray-500"
-                      }`}
-                    />
-                  ))}
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {reviewsList.map((rev, idx) => (
+                <div
+                  key={idx}
+                  className="p-5 rounded-xl shadow-md dark:shadow-lg bg-white dark:bg-gray-900 transition hover:shadow-xl dark:hover:shadow-emerald-900"
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="font-semibold text-gray-800 dark:text-gray-100">
+                      {rev.reviewerName}
+                    </p>
+                    <span className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
+                      <FaClock className="mr-1 text-emerald-500" />
+                      {timeAgo(rev.createdAt)}
+                    </span>
+                  </div>
+                  <div className="flex gap-1 mb-2">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <FaStar
+                        key={star}
+                        className={`${
+                          star <= rev.rating
+                            ? "text-yellow-400"
+                            : "text-gray-300 dark:text-gray-600"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                    {rev.review}
+                  </p>
                 </div>
-                <p className="text-gray-700 dark:text-gray-300">{rev.review}</p>
-              </div>
-            ))
+              ))}
+            </div>
           )}
         </div>
       </div>

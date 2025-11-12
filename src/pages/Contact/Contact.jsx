@@ -5,7 +5,6 @@ import Login from "../Login/Login";
 const Contact = () => {
   return (
     <div>
-      <h1>Contact</h1>
       <Login />
     </div>
   );

@@ -183,13 +183,7 @@ const Header = () => {
                 >
                   My Properties
                 </Link>
-                <Link
-                  to="/my-ratings"
-                  className="block px-3 py-2 rounded-lg hover:translate-x-2 duration-200 ease-in-out  mb-1"
-                  onClick={() => setIsDropdownOpen(false)}
-                >
-                  My Ratings
-                </Link>
+
                 <button
                   onClick={handleLogout}
                   className="w-full text-left px-3 py-2 rounded-lg  text-red-500 hover:translate-x-2 duration-200 ease-in-out"

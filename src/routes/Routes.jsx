@@ -11,7 +11,6 @@ import UserProfile from "../components/UserProfile/UserProfile";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import AddProperties from "../pages/PrivatePages/AddProperties/AddProperties";
 import MyProperties from "../pages/PrivatePages/MyProperties/MyProperties";
-import MyRatings from "../pages/PrivatePages/MyRatings/MyRatings";
 import PropertyDetails from "../pages/PrivatePages/PropertyDetails/PropertyDetails";
 
 export const router = createBrowserRouter([
@@ -50,14 +49,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      {
-        path: "my-ratings",
-        element: (
-          <PrivateRoute>
-            <MyRatings />
-          </PrivateRoute>
-        ),
-      },
+
       {
         path: "property/:id",
         element: (
