@@ -12,6 +12,7 @@ import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import AddProperties from "../pages/PrivatePages/AddProperties/AddProperties";
 import MyProperties from "../pages/PrivatePages/MyProperties/MyProperties";
 import PropertyDetails from "../pages/PrivatePages/PropertyDetails/PropertyDetails";
+import TermsAndConditions from "../pages/TermsAndConditions/TermsAndConditions";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
       { path: "contact", element: <Contact /> },
       { path: "login", element: <Login /> },
       { path: "signup", element: <SignUp /> },
+      {
+        path: "terms",
+        element: <TermsAndConditions />,
+      },
       {
         path: "profile",
         element: (
