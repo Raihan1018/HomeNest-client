@@ -58,7 +58,7 @@ const PropertyDetails = () => {
 
   if (!property)
     return (
-      <p className="p-6 text-center text-gray-600 dark:text-gray-300 text-lg">
+      <p className=" text-center  text-lg mx-auto min-h-screen flex justify-center items-center">
         Loading...
       </p>
     );

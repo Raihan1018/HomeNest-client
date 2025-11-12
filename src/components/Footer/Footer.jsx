@@ -6,6 +6,7 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Logo from "../Logo/Logo";
 
 const Footer = () => {
   return (
@@ -13,12 +14,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
         {/* Logo & Website Name */}
         <div className="flex flex-col items-start">
-          <div className="flex items-center gap-2 mb-2">
-            <div className="w-10 h-10 bg-emerald-600  flex items-center justify-center rounded-full font-bold text-lg">
-              W
-            </div>
-            <span className="text-xl font-semibold">WebEstate</span>
-          </div>
+          <Logo />
           <p className="">Modern Real Estate Solutions</p>
         </div>
 

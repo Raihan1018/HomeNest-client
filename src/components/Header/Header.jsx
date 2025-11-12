@@ -5,6 +5,7 @@ import logo from "../../assets/logo.png";
 import { AuthContext } from "../../Context/AuthContext/AuthContext";
 import Swal from "sweetalert2";
 import { FaMoon, FaSun } from "react-icons/fa";
+import Logo from "../Logo/Logo";
 
 const Header = () => {
   const { user, signOutUser } = useContext(AuthContext);
@@ -63,7 +64,7 @@ const Header = () => {
       : "https://i.ibb.co/Z8jQZrJ/default-user.png";
 
   return (
-    <div className="navbar  shadow-sm px-4">
+    <div className="navbar  shadow-sm px-4 sticky top-0 left-0 right-0 z-50 bg-base-100">
       {/* Left: Logo + Mobile Menu */}
       <div className="navbar-start">
         <div className="dropdown ">
@@ -105,7 +106,7 @@ const Header = () => {
         </div>
 
         <Link to={"/"}>
-          <img src={logo} alt="HomeNest" className="h-10 w-auto" />
+          <Logo />
         </Link>
       </div>
 

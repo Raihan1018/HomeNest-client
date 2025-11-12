@@ -30,7 +30,7 @@ const BackToTop = () => {
       {visible && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-10 right-10 btn btn-primary shadow-lg w-20 h-20 p-2"
+          className="fixed bottom-5 right-2 btn btn-primary shadow-lg w-15 h-20 p-2"
         >
           <Lottie
             animationData={upArrow}
