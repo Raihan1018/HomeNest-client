@@ -1,5 +1,7 @@
 import React from "react";
 import { FaLightbulb, FaUsers, FaRocket } from "react-icons/fa";
+import Building_Construction from "../../Animation/Building_Construction.json";
+import Lottie from "lottie-react";
 
 const WhyUs = () => {
   const reasons = [
@@ -24,30 +26,42 @@ const WhyUs = () => {
   ];
 
   return (
-    <div className="bg-gray-50 py-20 px-5 md:px-20">
-      <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold text-gray-800 mb-4">
-          Why Choose Us?
-        </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
-          We combine expertise, innovation, and dedication to provide
-          exceptional services that help your business grow.
-        </p>
+    <div>
+      {/* Lottie Animation Section */}
+      <div className="w-full max-w-4xl mx-auto ">
+        <Lottie
+          animationData={Building_Construction}
+          loop={true}
+          autoplay={true}
+        />
       </div>
 
-      <div className="grid md:grid-cols-3 gap-10">
-        {reasons.map((reason, index) => (
-          <div
-            key={index}
-            className="bg-white p-8 rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl"
-          >
-            <div className="mb-6">{reason.icon}</div>
-            <h3 className="text-xl font-semibold mb-3 text-gray-800">
-              {reason.title}
-            </h3>
-            <p className="text-gray-600">{reason.description}</p>
-          </div>
-        ))}
+      {/* Reasons Section */}
+      <div className=" py-20 px-5 md:px-20">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold  mb-4">
+            Why Choose Us?
+          </h2>
+          <p className=" max-w-2xl mx-auto">
+            We combine expertise, innovation, and dedication to provide
+            exceptional services that help your business grow.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-10">
+          {reasons.map((reason, index) => (
+            <div
+              key={index}
+              className=" p-8 rounded-2xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl border"
+            >
+              <div className="mb-6">{reason.icon}</div>
+              <h3 className="text-xl font-semibold mb-3 ">
+                {reason.title}
+              </h3>
+              <p className="">{reason.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

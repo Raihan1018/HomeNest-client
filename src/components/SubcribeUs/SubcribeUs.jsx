@@ -18,8 +18,8 @@ const SubscribeUs = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center w-full   p-3">
-      <div className=" rounded-xl shadow-lg p-10 max-w-md w-full relative">
+    <div className="min-h-screen flex items-center justify-center w-full">
+      <div className=" rounded-xl shadow-lg  max-w-md w-full relative">
         <h2 className="text-3xl font-bold mb-4  text-center">
           Subscribe to Our Newsletter
         </h2>
