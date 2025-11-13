@@ -2,13 +2,16 @@
 
 Professional frontend application built with Vite + React and Tailwind CSS. Uses modular components, animations, and Firebase integration. Deploys to Vercel.
 
+## Server link:
+
+https://github.com/Raihan1018/HomeNest-server.git
+
 ## 🌐 Live Demo
 
 Here are the connected frontend deployments using this backend:
 
-- 🔗 **Netlify:** [https://celadon-valkyrie-8f556f.netlify.app/](https://celadon-valkyrie-8f556f.netlify.app/)
-- 🔗 **Vercel:** [https://homenest-client-seven.vercel.app/](https://homenest-client-seven.vercel.app/)
-- 🔗 **Surge:** [http://vagabond-water.surge.sh/](http://vagabond-water.surge.sh/)
+- 🔗 **Netlify:** [https://smart-homenest.netlify.app/](https://smart-homenest.netlify.app/)
+- 🔗 **Vercel:** [https://home-nest-client.vercel.app/](https://home-nest-client.vercel.app/)
 
 ## Quick links
 
