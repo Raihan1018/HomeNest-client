@@ -113,16 +113,16 @@ const SignUp = () => {
             {/* Name */}
             <div className="form-control">
               <label className="label">
-                <span className="text-gray-300 font-medium">Full Name</span>
+                <span className=" font-medium">Full Name</span>
               </label>
               <div className="relative">
-                <FaUser className="absolute left-3 top-3 text-gray-400" />
+                <FaUser className="absolute left-3 top-3 0" />
                 <input
                   type="text"
                   name="name"
                   required
                   placeholder="Enter your name"
-                  className="input input-bordered w-full pl-10 bg-base-200 text-gray-100 border-gray-600 focus:border-purple-500 focus:outline-none"
+                  className="input input-bordered w-full pl-10 bg-base-200  border-gray-600 focus:border-purple-500 focus:outline-none"
                 />
               </div>
             </div>
@@ -130,16 +130,16 @@ const SignUp = () => {
             {/* Email */}
             <div className="form-control">
               <label className="label">
-                <span className="text-gray-300 font-medium">Email</span>
+                <span className=" font-medium">Email</span>
               </label>
               <div className="relative">
-                <FaEnvelope className="absolute left-3 top-3 text-gray-400" />
+                <FaEnvelope className="absolute left-3 top-3 " />
                 <input
                   type="email"
                   name="email"
                   required
                   placeholder="Enter your email"
-                  className="input input-bordered w-full pl-10 bg-base-200 text-gray-100 border-gray-600 focus:border-purple-500 focus:outline-none"
+                  className="input input-bordered w-full pl-10 bg-base-200  focus:border-purple-500 focus:outline-none"
                 />
               </div>
             </div>
@@ -147,16 +147,16 @@ const SignUp = () => {
             {/* Photo URL */}
             <div className="form-control">
               <label className="label">
-                <span className="text-gray-300 font-medium">Photo URL</span>
+                <span className=" font-medium">Photo URL</span>
               </label>
               <div className="relative">
-                <MdOutlinePhoto className="absolute left-3 top-3 text-gray-400" />
+                <MdOutlinePhoto className="absolute left-3 top-3 " />
                 <input
                   type="text"
                   name="photoURL"
                   required
                   placeholder="Enter your Photo URL"
-                  className="input input-bordered w-full pl-10 bg-base-200 text-gray-100 border-gray-600 focus:border-purple-500 focus:outline-none"
+                  className="input input-bordered w-full pl-10 bg-base-200  focus:border-purple-500 focus:outline-none"
                 />
               </div>
             </div>
@@ -164,26 +164,26 @@ const SignUp = () => {
             {/* Password */}
             <div className="form-control">
               <label className="label">
-                <span className="text-gray-300 font-medium">Password</span>
+                <span className=" font-medium">Password</span>
               </label>
               <div className="relative">
-                <FaLock className="absolute left-3 top-3 text-gray-400" />
+                <FaLock className="absolute left-3 top-3 " />
                 <input
                   type={showPassword ? "text" : "password"}
                   name="password"
                   required
                   placeholder="Create a password"
-                  className="input input-bordered w-full pl-10 pr-10 bg-base-200 text-gray-100 border-gray-600 focus:border-purple-500 focus:outline-none"
+                  className="input input-bordered w-full pl-10 pr-10  focus:border-purple-500 focus:outline-none"
                 />
                 <div
-                  className="absolute right-3 top-3 text-gray-400 cursor-pointer"
+                  className="absolute right-3 top-3 cursor-pointer"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </div>
               </div>
 
-              <ul className="text-xs text-gray-400 mt-2 list-disc list-inside space-y-1">
+              <ul className="text-xs  mt-2 list-disc list-inside space-y-1">
                 <li>Must contain at least one uppercase letter (A–Z)</li>
                 <li>Must contain at least one lowercase letter (a–z)</li>
                 <li>Must be at least 6 characters long</li>
@@ -208,9 +208,9 @@ const SignUp = () => {
             </div>
           </form>
 
-          <div className="divider text-gray-400">OR</div>
+          <div className="divider ">OR</div>
 
-          <p className="text-center text-sm text-gray-400">
+          <p className="text-center text-sm ">
             Already have an account?{" "}
             <Link
               to="/login"

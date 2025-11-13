@@ -134,7 +134,7 @@ const Header = () => {
           <div className="flex gap-3">
             <Link
               to="/login"
-              className="btn btn-outline btn-success hover:bg-emerald-500 hover:border-emerald-500 hover:text-white transition"
+              className="btn btn-outline btn-success hover:bg-emerald-500 hover:border-emerald-500 "
             >
               Login
             </Link>

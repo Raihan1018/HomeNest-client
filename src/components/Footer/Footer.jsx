@@ -65,9 +65,7 @@ const Footer = () => {
 
         {/* Quick Links */}
         <div>
-          <h4 className="font-semibold text-lg mb-4 text-gray-800 dark:text-gray-100">
-            Quick Links
-          </h4>
+          <h4 className="font-semibold text-lg mb-4 ">Quick Links</h4>
           <ul className="space-y-2">
             <li>
               <Link to="/" className="hover:text-emerald-600 transition">
@@ -102,9 +100,7 @@ const Footer = () => {
 
         {/* Social Media */}
         <div className="text-center mx-auto">
-          <h4 className="font-semibold text-lg mb-4 text-gray-800 dark:text-gray-100">
-            Follow Us
-          </h4>
+          <h4 className="font-semibold text-lg mb-4 ">Follow Us</h4>
           <div className="flex gap-4">
             <Link
               to="https://facebook.com"
@@ -137,7 +133,7 @@ const Footer = () => {
       </div>
 
       {/* Divider */}
-      <div className="border-t border-gray-300 dark:border-gray-700 mt-10 pt-6 text-center text-sm text-gray-500 dark:text-gray-400">
+      <div className="border-t  mt-10 pt-6 text-center text-sm ">
         &copy; {new Date().getFullYear()} HomeNest. All rights reserved.
       </div>
     </footer>

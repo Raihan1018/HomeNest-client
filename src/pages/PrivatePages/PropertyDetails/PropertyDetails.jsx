@@ -132,29 +132,29 @@ const PropertyDetails = () => {
 
         {/* Details */}
         <div className="flex flex-col justify-between space-y-4">
-          <h2 className="text-3xl font-bold dark:text-gray-100">
+          <h2 className="text-3xl font-bold ">
             {property.name}
           </h2>
-          <p className="text-gray-700 dark:text-gray-300">
+          <p className="">
             {property.description}
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 text-gray-800 dark:text-gray-200">
-            <p className="flex items-center gap-2 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg shadow-sm dark:shadow-md">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 ">
+            <p className="flex items-center gap-2  p-3 rounded-lg shadow-sm dark:shadow-md">
               <FaTags className="text-emerald-500" /> {property.category}
             </p>
-            <p className="flex items-center gap-2 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg shadow-sm dark:shadow-md">
+            <p className="flex items-center gap-2  p-3 rounded-lg shadow-sm dark:shadow-md">
               <FaDollarSign className="text-emerald-500" /> {property.price}
             </p>
-            <p className="flex items-center gap-2 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg shadow-sm dark:shadow-md">
+            <p className="flex items-center gap-2  p-3 rounded-lg shadow-sm dark:shadow-md">
               <FaMapMarkerAlt className="text-emerald-500" />{" "}
               {property.location}
             </p>
-            <p className="flex items-center gap-2 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg shadow-sm dark:shadow-md">
+            <p className="flex items-center gap-2  p-3 rounded-lg shadow-sm dark:shadow-md">
               <FaUser className="text-emerald-500" /> {property.userName} (
               {property.userEmail})
             </p>
-            <p className="flex items-center gap-2 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg shadow-sm dark:shadow-md">
+            <p className="flex items-center gap-2  p-3 rounded-lg shadow-sm dark:shadow-md">
               <FaCalendarAlt className="text-emerald-500" />{" "}
               {new Date(property.createdAt).toLocaleDateString()}
             </p>
@@ -164,13 +164,13 @@ const PropertyDetails = () => {
 
       {/* Ratings & Reviews */}
       <div className="space-y-6">
-        <h3 className="text-2xl font-semibold dark:text-gray-100">
+        <h3 className="text-2xl font-semibold ">
           Ratings & Reviews
         </h3>
 
         {/* Add Review Form */}
-        <div className="p-6 rounded-xl shadow-md dark:shadow-lg bg-gray-50 dark:bg-gray-800 space-y-4">
-          <h4 className="font-medium dark:text-gray-200">Add Your Review</h4>
+        <div className="p-6 rounded-xl shadow-md dark:shadow-lg  space-y-4">
+          <h4 className="font-medium ">Add Your Review</h4>
           <div className="flex items-center gap-2">
             {[1, 2, 3, 4, 5].map((star) => (
               <FaStar
@@ -179,7 +179,7 @@ const PropertyDetails = () => {
                 className={`cursor-pointer transition ${
                   (hoverRating || rating) >= star
                     ? "text-yellow-400"
-                    : "text-gray-300 dark:text-gray-500"
+                    : ""
                 }`}
                 onMouseEnter={() => setHoverRating(star)}
                 onMouseLeave={() => setHoverRating(0)}
@@ -192,11 +192,11 @@ const PropertyDetails = () => {
             onChange={(e) => setReview(e.target.value)}
             rows={4}
             placeholder="Write your review..."
-            className="w-full px-4 py-3 border rounded-lg dark:bg-gray-700 dark:text-gray-100 dark:border-gray-600"
+            className="w-full px-4 py-3 border rounded-lg "
           />
           <button
             onClick={handleSubmitReview}
-            className="bg-emerald-600 hover:bg-emerald-700 text-white py-2 px-6 rounded-lg font-medium transition"
+            className="bg-emerald-600 hover:bg-emerald-700  py-2 px-6 rounded-lg font-medium transition"
           >
             Submit Review
           </button>
@@ -205,19 +205,19 @@ const PropertyDetails = () => {
         {/* Reviews List */}
         <div className="space-y-4">
           {reviewsList.length === 0 ? (
-            <p className="text-gray-500 dark:text-gray-400">No reviews yet.</p>
+            <p className="">No reviews yet.</p>
           ) : (
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {reviewsList.map((rev, idx) => (
                 <div
                   key={idx}
-                  className="p-5 rounded-xl shadow-md dark:shadow-lg bg-white dark:bg-gray-900 transition hover:shadow-xl dark:hover:shadow-emerald-900"
+                  className="p-5 rounded-xl shadow-md dark:shadow-lg  transition hover:shadow-xl dark:hover:shadow-emerald-900"
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <p className="font-semibold text-gray-800 dark:text-gray-100">
+                    <p className="font-semibold ">
                       {rev.reviewerName}
                     </p>
-                    <span className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
+                    <span className="flex items-center  text-sm">
                       <FaClock className="mr-1 text-emerald-500" />
                       {timeAgo(rev.createdAt)}
                     </span>
@@ -229,12 +229,12 @@ const PropertyDetails = () => {
                         className={`${
                           star <= rev.rating
                             ? "text-yellow-400"
-                            : "text-gray-300 dark:text-gray-600"
+                            : ""
                         }`}
                       />
                     ))}
                   </div>
-                  <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                  <p className=" text-sm leading-relaxed">
                     {rev.review}
                   </p>
                 </div>

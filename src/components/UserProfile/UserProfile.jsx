@@ -24,9 +24,9 @@ const Profile = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-base-200 dark:bg-gray-800 rounded-lg shadow-lg mt-10 text-center transition-all duration-300">
+    <div className="max-w-md mx-auto p-6 bg-base-200  rounded-lg shadow-lg mt-10 text-center transition-all duration-300">
       <title>Profile</title>
-      <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+      <h2 className="text-2xl font-bold mb-4 ">
         Your Profile
       </h2>
       <p className="mb-4 text-purple-600 dark:text-purple-400">
@@ -40,7 +40,7 @@ const Profile = () => {
             className="w-24 h-24 rounded-full border-4 border-purple-500 dark:border-purple-400 shadow-md"
           />
         ) : (
-          <div className="w-24 h-24 rounded-full flex items-center justify-center bg-gray-300 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
+          <div className="w-24 h-24 rounded-full flex items-center justify-center bg-gray-300 ">
             <FaUserAlt size={40} />
           </div>
         )}
@@ -52,14 +52,14 @@ const Profile = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Enter your name"
-              className="input input-bordered w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
+              className="input input-bordered w-full "
             />
             <input
               type="text"
               value={photoURL}
               onChange={(e) => setPhotoURL(e.target.value)}
               placeholder="Enter photo URL"
-              className="input input-bordered w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
+              className="input input-bordered w-full "
             />
             <button
               onClick={handleUpdate}
@@ -71,11 +71,11 @@ const Profile = () => {
           </>
         ) : (
           <>
-            <p className="text-gray-800 dark:text-gray-200">
+            <p className="">
               <strong>Name:</strong>{" "}
               <span className="text-green-600 dark:text-green-400">{name}</span>
             </p>
-            <p className="text-gray-800 dark:text-gray-200">
+            <p className="">
               <strong>Email:</strong>{" "}
               <span className="text-green-600 dark:text-green-400">
                 {user?.email}
@@ -83,7 +83,7 @@ const Profile = () => {
             </p>
             <button
               onClick={() => setEditing(true)}
-              className="btn btn-outline w-full border-purple-500 text-purple-600 hover:bg-purple-500 hover:text-white dark:border-purple-400 dark:text-purple-300 dark:hover:bg-purple-500 dark:hover:text-white"
+              className="btn btn-outline w-full border-purple-500 text-purple-600 hover:bg-purple-500  dark:border-purple-400 dark:text-purple-300 dark:hover:bg-purple-500 "
             >
               Edit Profile
             </button>
