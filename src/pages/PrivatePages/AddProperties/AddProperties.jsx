@@ -29,14 +29,17 @@ const AddProperty = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:3000/properties", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "user-email": user?.email,
-        },
-        body: JSON.stringify(propertyData),
-      });
+      const response = await fetch(
+        "https://homenest-server-api.vercel.app/properties",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "user-email": user?.email,
+          },
+          body: JSON.stringify(propertyData),
+        }
+      );
 
       const data = await response.json();
 
@@ -80,6 +83,7 @@ const AddProperty = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-8">
+      <title>Add Property</title>
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}

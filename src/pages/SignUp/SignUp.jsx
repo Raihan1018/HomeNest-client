@@ -80,6 +80,7 @@ const SignUp = () => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center w-full max-w-6xl mx-auto px-4 py-10">
+      <title>Sign Up</title>
       <Toaster position="top-right" reverseOrder={false} />
 
       {/* Animation Section */}

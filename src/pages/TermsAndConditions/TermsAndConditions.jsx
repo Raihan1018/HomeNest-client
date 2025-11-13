@@ -3,6 +3,7 @@ import React from "react";
 const TermsAndConditions = () => {
   return (
     <div className=" min-h-screen py-16 px-6 md:px-20">
+      <title>Terms & Conditions</title>
       <div className="max-w-4xl mx-auto  rounded-2xl shadow-lg p-10">
         <h1 className="text-4xl font-bold  mb-6 text-center">
           Terms & Conditions

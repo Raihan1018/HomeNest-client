@@ -5,6 +5,7 @@ import Login from "../Login/Login";
 const Contact = () => {
   return (
     <div>
+      <title>Contact</title>
       <Login />
     </div>
   );

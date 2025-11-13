@@ -15,7 +15,9 @@ const MyProperties = () => {
   // Fetch user properties
   useEffect(() => {
     if (!user) return;
-    fetch(`http://localhost:3000/properties?userEmail=${user.email}`)
+    fetch(
+      `https://homenest-server-api.vercel.app/properties?userEmail=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => setProperties(data))
       .catch((err) => console.error(err));
@@ -33,7 +35,9 @@ const MyProperties = () => {
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/properties/${id}`, { method: "DELETE" })
+        fetch(`https://homenest-server-api.vercel.app/properties/${id}`, {
+          method: "DELETE",
+        })
           .then((res) => res.json())
           .then(() => {
             setProperties(properties.filter((p) => p._id !== id));
@@ -61,11 +65,14 @@ const MyProperties = () => {
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/properties/${editingProperty._id}`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(editingProperty),
-        })
+        fetch(
+          `https://homenest-server-api.vercel.app/properties/${editingProperty._id}`,
+          {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(editingProperty),
+          }
+        )
           .then((res) => res.json())
           .then(() => {
             setProperties(
@@ -96,6 +103,7 @@ const MyProperties = () => {
 
   return (
     <div className="p-6">
+      <title>My Property</title>
       <h2 className="text-3xl font-semibold mb-5">My Properties</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {properties.map((property) => (

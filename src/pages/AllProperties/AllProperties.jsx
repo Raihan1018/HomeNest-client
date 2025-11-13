@@ -18,7 +18,7 @@ const AllProperties = () => {
 
   // Fetch all properties
   useEffect(() => {
-    fetch("http://localhost:3000/properties")
+    fetch("https://homenest-server-api.vercel.app/properties")
       .then((res) => res.json())
       .then((data) => setProperties(data))
       .catch((err) => console.error(err));
@@ -45,6 +45,7 @@ const AllProperties = () => {
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
+      <title>All Properties</title>
       <h2 className="text-3xl font-semibold mb-6 text-center dark:text-gray-100 text-gray-800">
         All Properties
       </h2>

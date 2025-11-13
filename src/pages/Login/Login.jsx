@@ -55,6 +55,7 @@ const Login = () => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center ">
+      <title>Login</title>
       {/* Animation Section */}
       <motion.div
         className="w-full flex justify-center"

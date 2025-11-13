@@ -39,7 +39,7 @@ const PropertyDetails = () => {
 
   // Function to fetch reviews
   const fetchReviews = () => {
-    fetch(`http://localhost:3000/reviews?propertyId=${id}`)
+    fetch(`https://homenest-server-api.vercel.app/reviews?propertyId=${id}`)
       .then((res) => res.json())
       .then((data) => setReviewsList(data))
       .catch((err) => console.error(err));
@@ -47,7 +47,7 @@ const PropertyDetails = () => {
 
   useEffect(() => {
     // Fetch property details
-    fetch(`http://localhost:3000/properties/${id}`)
+    fetch(`https://homenest-server-api.vercel.app/properties/${id}`)
       .then((res) => res.json())
       .then((data) => setProperty(data))
       .catch((err) => console.error(err));
@@ -82,11 +82,14 @@ const PropertyDetails = () => {
     };
 
     try {
-      const res = await fetch(`http://localhost:3000/reviews`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(reviewData),
-      });
+      const res = await fetch(
+        `https://homenest-server-api.vercel.app/reviews`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(reviewData),
+        }
+      );
 
       if (!res.ok) throw new Error("Failed to add review");
 
@@ -115,6 +118,7 @@ const PropertyDetails = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-12">
+      <title>Property Details</title>
       {/* Property Info */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Image */}
