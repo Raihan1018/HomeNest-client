@@ -18,7 +18,7 @@ const AllProperties = () => {
 
   // Fetch all properties
   useEffect(() => {
-    fetch("https://homenest-server-api.vercel.app/properties")
+    fetch("http://localhost:3000/properties")
       .then((res) => res.json())
       .then((data) => setProperties(data))
       .catch((err) => console.error(err));

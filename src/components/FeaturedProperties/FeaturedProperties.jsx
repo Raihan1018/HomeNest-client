@@ -13,7 +13,7 @@ const FeaturedProperties = () => {
 
   useEffect(() => {
     // Fetch properties sorted by newest first
-    fetch("https://homenest-server-api.vercel.app/properties?sort=newest")
+    fetch("http://localhost:3000/properties?sort=newest")
       .then((res) => res.json())
       .then((data) => setProperties(data))
       .catch((err) => console.error(err));

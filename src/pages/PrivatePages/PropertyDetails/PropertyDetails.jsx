@@ -39,7 +39,7 @@ const PropertyDetails = () => {
 
   // Function to fetch reviews
   const fetchReviews = () => {
-    fetch(`https://homenest-server-api.vercel.app/reviews?propertyId=${id}`)
+    fetch(`http://localhost:3000/reviews?propertyId=${id}`)
       .then((res) => res.json())
       .then((data) => setReviewsList(data))
       .catch((err) => console.error(err));
@@ -47,7 +47,7 @@ const PropertyDetails = () => {
 
   useEffect(() => {
     // Fetch property details
-    fetch(`https://homenest-server-api.vercel.app/properties/${id}`)
+    fetch(`http://localhost:3000/properties/${id}`)
       .then((res) => res.json())
       .then((data) => setProperty(data))
       .catch((err) => console.error(err));
@@ -82,14 +82,11 @@ const PropertyDetails = () => {
     };
 
     try {
-      const res = await fetch(
-        `https://homenest-server-api.vercel.app/reviews`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(reviewData),
-        }
-      );
+      const res = await fetch(`http://localhost:3000/reviews`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(reviewData),
+      });
 
       if (!res.ok) throw new Error("Failed to add review");
 
@@ -132,12 +129,8 @@ const PropertyDetails = () => {
 
         {/* Details */}
         <div className="flex flex-col justify-between space-y-4">
-          <h2 className="text-3xl font-bold ">
-            {property.name}
-          </h2>
-          <p className="">
-            {property.description}
-          </p>
+          <h2 className="text-3xl font-bold ">{property.name}</h2>
+          <p className="">{property.description}</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 ">
             <p className="flex items-center gap-2  p-3 rounded-lg shadow-sm dark:shadow-md">
@@ -164,9 +157,7 @@ const PropertyDetails = () => {
 
       {/* Ratings & Reviews */}
       <div className="space-y-6">
-        <h3 className="text-2xl font-semibold ">
-          Ratings & Reviews
-        </h3>
+        <h3 className="text-2xl font-semibold ">Ratings & Reviews</h3>
 
         {/* Add Review Form */}
         <div className="p-6 rounded-xl shadow-md dark:shadow-lg  space-y-4">
@@ -177,9 +168,7 @@ const PropertyDetails = () => {
                 key={star}
                 size={28}
                 className={`cursor-pointer transition ${
-                  (hoverRating || rating) >= star
-                    ? "text-yellow-400"
-                    : ""
+                  (hoverRating || rating) >= star ? "text-yellow-400" : ""
                 }`}
                 onMouseEnter={() => setHoverRating(star)}
                 onMouseLeave={() => setHoverRating(0)}
@@ -214,9 +203,7 @@ const PropertyDetails = () => {
                   className="p-5 rounded-xl shadow-md dark:shadow-lg  transition hover:shadow-xl dark:hover:shadow-emerald-900"
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <p className="font-semibold ">
-                      {rev.reviewerName}
-                    </p>
+                    <p className="font-semibold ">{rev.reviewerName}</p>
                     <span className="flex items-center  text-sm">
                       <FaClock className="mr-1 text-emerald-500" />
                       {timeAgo(rev.createdAt)}
@@ -227,16 +214,12 @@ const PropertyDetails = () => {
                       <FaStar
                         key={star}
                         className={`${
-                          star <= rev.rating
-                            ? "text-yellow-400"
-                            : ""
+                          star <= rev.rating ? "text-yellow-400" : ""
                         }`}
                       />
                     ))}
                   </div>
-                  <p className=" text-sm leading-relaxed">
-                    {rev.review}
-                  </p>
+                  <p className=" text-sm leading-relaxed">{rev.review}</p>
                 </div>
               ))}
             </div>

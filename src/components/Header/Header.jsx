@@ -97,9 +97,7 @@ const Header = () => {
                 <li>
                   <Link to="/my-properties">My Properties</Link>
                 </li>
-                <li>
-                  <Link to="/my-ratings">My Ratings</Link>
-                </li>
+                
               </>
             )}
           </ul>

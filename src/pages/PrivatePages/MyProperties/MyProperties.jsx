@@ -15,9 +15,7 @@ const MyProperties = () => {
   // Fetch user properties
   useEffect(() => {
     if (!user) return;
-    fetch(
-      `https://homenest-server-api.vercel.app/properties?userEmail=${user.email}`
-    )
+    fetch(`http://localhost:3000/properties?userEmail=${user.email}`)
       .then((res) => res.json())
       .then((data) => setProperties(data))
       .catch((err) => console.error(err));
@@ -35,7 +33,7 @@ const MyProperties = () => {
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://homenest-server-api.vercel.app/properties/${id}`, {
+        fetch(`http://localhost:3000/properties/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -65,14 +63,11 @@ const MyProperties = () => {
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(
-          `https://homenest-server-api.vercel.app/properties/${editingProperty._id}`,
-          {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(editingProperty),
-          }
-        )
+        fetch(`http://localhost:3000/properties/${editingProperty._id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(editingProperty),
+        })
           .then((res) => res.json())
           .then(() => {
             setProperties(
@@ -151,9 +146,7 @@ const MyProperties = () => {
       {editingProperty && (
         <div className="fixed inset-0  bg-opacity-50 flex items-center justify-center z-50 px-4">
           <div className=" rounded-2xl shadow-xl w-full max-w-lg p-6 relative animate-slideIn">
-            <h2 className="text-2xl font-semibold mb-6 ">
-              Update Property
-            </h2>
+            <h2 className="text-2xl font-semibold mb-6 ">Update Property</h2>
             <form onSubmit={handleUpdateSubmit} className="space-y-4">
               <input
                 type="text"
