@@ -23,3 +23,5 @@ firebase.init.js
 *.njsproj
 *.sln
 *.sw?
+
+.vercel
