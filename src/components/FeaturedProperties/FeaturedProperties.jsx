@@ -46,7 +46,7 @@ const FeaturedProperties = () => {
 
   return (
     <div className="max-w-7xl mx-auto py-12 flex flex-col">
-      <h2 className="text-3xl font-bold mb-8 dark:text-gray-100 text-center">
+      <h2 className="text-3xl font-bold mb-8  text-center">
         Featured Real Estate
       </h2>
 
