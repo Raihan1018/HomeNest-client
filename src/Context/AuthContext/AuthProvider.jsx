@@ -10,7 +10,7 @@ import {
 } from "firebase/auth";
 
 import { GoogleAuthProvider } from "firebase/auth";
-import { auth } from "../../firebase/firebase.init";
+import { auth } from "../../firebase/firebase.init.js";
 
 const googleProvider = new GoogleAuthProvider();
 
