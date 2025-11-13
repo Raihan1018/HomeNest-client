@@ -18,7 +18,7 @@ const AllProperties = () => {
 
   // Fetch all properties
   useEffect(() => {
-    fetch("http://localhost:3000/properties")
+    fetch("https://home-nest-server-seven.vercel.app/properties")
       .then((res) => res.json())
       .then((data) => setProperties(data))
       .catch((err) => console.error(err));

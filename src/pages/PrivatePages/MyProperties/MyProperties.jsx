@@ -15,7 +15,9 @@ const MyProperties = () => {
   // Fetch user properties
   useEffect(() => {
     if (!user) return;
-    fetch(`http://localhost:3000/properties?userEmail=${user.email}`)
+    fetch(
+      `https://home-nest-server-seven.vercel.app/properties?userEmail=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => setProperties(data))
       .catch((err) => console.error(err));
@@ -33,7 +35,7 @@ const MyProperties = () => {
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/properties/${id}`, {
+        fetch(`https://home-nest-server-seven.vercel.app/properties/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -63,11 +65,14 @@ const MyProperties = () => {
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/properties/${editingProperty._id}`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(editingProperty),
-        })
+        fetch(
+          `https://home-nest-server-seven.vercel.app/properties/${editingProperty._id}`,
+          {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(editingProperty),
+          }
+        )
           .then((res) => res.json())
           .then(() => {
             setProperties(

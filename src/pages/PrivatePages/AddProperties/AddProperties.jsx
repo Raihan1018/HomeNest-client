@@ -29,14 +29,17 @@ const AddProperty = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:3000/properties", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "user-email": user?.email,
-        },
-        body: JSON.stringify(propertyData),
-      });
+      const response = await fetch(
+        "https://home-nest-server-seven.vercel.app/properties",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "user-email": user?.email,
+          },
+          body: JSON.stringify(propertyData),
+        }
+      );
 
       const data = await response.json();
 

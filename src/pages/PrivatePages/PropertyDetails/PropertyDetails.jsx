@@ -39,7 +39,7 @@ const PropertyDetails = () => {
 
   // Function to fetch reviews
   const fetchReviews = () => {
-    fetch(`http://localhost:3000/reviews?propertyId=${id}`)
+    fetch(`https://home-nest-server-seven.vercel.app/reviews?propertyId=${id}`)
       .then((res) => res.json())
       .then((data) => setReviewsList(data))
       .catch((err) => console.error(err));
@@ -47,7 +47,7 @@ const PropertyDetails = () => {
 
   useEffect(() => {
     // Fetch property details
-    fetch(`http://localhost:3000/properties/${id}`)
+    fetch(`https://home-nest-server-seven.vercel.app/properties/${id}`)
       .then((res) => res.json())
       .then((data) => setProperty(data))
       .catch((err) => console.error(err));
@@ -82,11 +82,14 @@ const PropertyDetails = () => {
     };
 
     try {
-      const res = await fetch(`http://localhost:3000/reviews`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(reviewData),
-      });
+      const res = await fetch(
+        `https://home-nest-server-seven.vercel.app/reviews`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(reviewData),
+        }
+      );
 
       if (!res.ok) throw new Error("Failed to add review");
 
